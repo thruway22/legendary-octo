@@ -1,4 +1,5 @@
 streamlit
+google-cloud
 pandas
 yfinance
 plotly
