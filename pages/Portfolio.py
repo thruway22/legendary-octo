@@ -9,12 +9,12 @@ st.title('Portfolio')
 # right.button('Add Portfolio')
 # df = pd.DataFrame({'names': ['VTI', 'KSA'], 'Hold': [10, 12]})
 
-dummy_data = {'name': 'X', 'currency': 'XXX'}
+col_ref = db.collection('portfolios')
+
 pf_name = st.text_input('pf_name')
 pf_currency = st.text_input('pf_currency')
 submitted = st.button('Add Portfolio')
 
-col_ref = db.collection('portfolios')
-
 if submitted:
+    data = {'name': pf_name, 'currency': pf_currency}
     col_ref.document(pf_name).set(dummy_data)
