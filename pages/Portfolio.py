@@ -9,6 +9,6 @@ st.write('portfolio')
 #                    'Duration': pd.Series(dtype='str'),
 #                    'Discount': pd.Series(dtype='float')})
 
-df = pd.DataFrame({'Ticker', 'Holdings'})
+df = pd.DataFrame({'Ticker':0, 'Holdings':0})
 
 st.data_editor(df)
