@@ -17,4 +17,4 @@ submitted = st.button('Add Portfolio')
 
 if submitted:
     data = {'name': pf_name, 'currency': pf_currency}
-    col_ref.document(pf_name).set(dummy_data)
+    col_ref.document(pf_name).set(data)
