@@ -3,7 +3,7 @@ from google.cloud import firestore
 from google.oauth2 import service_account
 import pandas as pd
 import yfinance as yf
-import test as test
+import auxload as aux
 
 import json
 key_dict = json.loads(st.secrets["textkey"])
@@ -23,7 +23,7 @@ st.button('Add Asset')
 tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
 with tab1:
-   test.lead()
+   aux.lead()
 
 with tab2:
    st.header("A dog")
