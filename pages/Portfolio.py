@@ -3,7 +3,9 @@ import pandas as pd
 
 
 st.title('Portfolio')
-st.selectbox('portfolio', ['All', 'USD', 'SAR'])
+left, right = st.columns([4,1])
+left.selectbox('portfolio', ['All', 'USD', 'SAR'])
+right.button('Add Portfolio')
 df = pd.DataFrame({'names': ['VTI', 'KSA'], 'Hold': [10, 12]})
 
 st.data_editor(df, num_rows='dynamic')
