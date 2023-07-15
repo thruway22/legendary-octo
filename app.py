@@ -17,6 +17,8 @@ doc = doc_ref.get()
 
 st.title('Test')
 
+st.button('Add Asset')
+
 st.write("The id is: ", doc.id)
 st.write("The contents are: ", doc.to_dict())
 
