@@ -23,7 +23,7 @@ st.button('Add Asset')
 tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
 
 with tab1:
-   aux.lead()
+   aux.load()
 
 with tab2:
    st.header("A dog")
