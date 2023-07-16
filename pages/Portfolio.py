@@ -32,7 +32,7 @@ submitted = st.button('Update')
 
 if submitted:
     data = {'name': portfolio_name, 'currency': portfolio_currency}
-    ref.document(portfolio).set(data)
+    ref.document(portfolio_name).set(data)
 
 
     # st.write(f"{i.id} => {i.to_dict()}")
