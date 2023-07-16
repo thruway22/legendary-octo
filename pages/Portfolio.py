@@ -22,18 +22,19 @@ portfolio = st.selectbox('portfolio', portfolios, label_visibility='collapsed')
 if portfolio == 'Add New...':
     name = ''
     currency = ''
+    del_button = False
 else:
     name = ref.document(portfolio).get().to_dict()['name']
     currency = ref.document(portfolio).get().to_dict()['currency']
+    del_button = True
 
-portfolio_name = st.text_input('pf_name', name)
-portfolio_currency = st.text_input('pf_currency', currency)
-submitted = st.button('Update', use_container_width=True)
+left, right = st.columns()
+portfolio_name = left.text_input('pf_name', name)
+portfolio_currency = right.text_input('pf_currency', currency)
 
-if portfolio == 'Add New...':
-    removed = False
-else:
-    removed = st.button('Del', use_container_width=True)
+left, right = st.columns()
+submitted = left.button('Update', use_container_width=True, disabled=del_button)
+removed = right.button('Del', use_container_width=True, disabled=del_button)
 
 if submitted:
     data = {'name': portfolio_name, 'currency': portfolio_currency}
