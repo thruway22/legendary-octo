@@ -19,4 +19,4 @@ if submitted:
     data = {'name': pf_name, 'currency': pf_currency}
     col_ref.document(pf_name).set(data)
 
-print(db.collection('portfolios').get())
+print(db.collection('portfolios').get().to_dict())
