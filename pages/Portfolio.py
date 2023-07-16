@@ -9,20 +9,26 @@ st.title('Portfolio')
 # right.button('Add Portfolio')
 # df = pd.DataFrame({'names': ['VTI', 'KSA'], 'Hold': [10, 12]})
 
-col_ref = db.collection('portfolios')
+ref = db.collection('portfolios')
+docs = ref.stream()
 
-pf_name = st.text_input('pf_name')
-pf_currency = st.text_input('pf_currency')
-submitted = st.button('Add Portfolio')
+portfolios = []
+for i in docs:
+    portfolios.append(i.id)
+portfolios.append('Add New...')   
+
+portfolio = st.selectbox('portfolio', portfolios, label_visibility='collapsed')
+
+name = ref.document(portfolio).get('name')
+currency = ref.document(portfolio).get('currency')
+
+portfolio_name = st.text_input('pf_name', name)
+portfolio_currency = st.text_input('pf_currency', currency)
+submitted = st.button('Update')
 
 if submitted:
     data = {'name': pf_name, 'currency': pf_currency}
     col_ref.document(pf_name).set(data)
 
-doc = db.collection('portfolios').stream()
-doc_list = []
-for i in doc:
-    doc_list.append(i.id)
-    # st.write(f"{i.id} => {i.to_dict()}")
 
-port = st.selectbox('portfolio', doc_list, label_visibility='collapsed')
+    # st.write(f"{i.id} => {i.to_dict()}")
