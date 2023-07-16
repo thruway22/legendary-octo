@@ -15,7 +15,7 @@ docs = ref.stream()
 portfolios = []
 for i in docs:
     portfolios.append(i.id)
-portfolios.append('Add New...')   
+portfolios.append('Add New...') 
 
 portfolio = st.selectbox('portfolio', portfolios, label_visibility='collapsed')
 
@@ -28,20 +28,23 @@ else:
     currency = ref.document(portfolio).get().to_dict()['currency']
     del_button = False
 
-portfolio_name = st.text_input('pf_name', name)
-portfolio_currency = st.text_input('pf_currency', currency)
+tab1, tab2 = st.tabs(['Holdings', 'Settings'])
 
-submitted = st.button('Update', use_container_width=True)
-removed = st.button('Del', use_container_width=True, disabled=del_button)
+with tab2:
+    portfolio_name = st.text_input('pf_name', name)
+    portfolio_currency = st.text_input('pf_currency', currency)
 
-if submitted:
-    data = {'name': portfolio_name, 'currency': portfolio_currency}
-    ref.document(portfolio_name).set(data)
-    st.experimental_rerun()
+    submitted = st.button('Update', use_container_width=True)
+    removed = st.button('Del', use_container_width=True, disabled=del_button)
 
-if removed:
-    ref.document(portfolio_name).delete()
-    st.experimental_rerun()
+    if submitted:
+        data = {'name': portfolio_name, 'currency': portfolio_currency}
+        ref.document(portfolio_name).set(data)
+        st.experimental_rerun()
+
+    if removed:
+        ref.document(portfolio_name).delete()
+        st.experimental_rerun()
 
 
     # st.write(f"{i.id} => {i.to_dict()}")
