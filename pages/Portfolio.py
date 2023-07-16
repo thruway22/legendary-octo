@@ -27,8 +27,8 @@ portfolio_currency = st.text_input('pf_currency', currency)
 submitted = st.button('Update')
 
 if submitted:
-    data = {'name': pf_name, 'currency': pf_currency}
-    col_ref.document(pf_name).set(data)
+    data = {'name': portfolio_name, 'currency': portfolio_currency}
+    ref.document(portfolio).set(data)
 
 
     # st.write(f"{i.id} => {i.to_dict()}")
