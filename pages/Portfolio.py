@@ -28,12 +28,12 @@ else:
 
 portfolio_name = st.text_input('pf_name', name)
 portfolio_currency = st.text_input('pf_currency', currency)
-submitted = st.button('Update')
+submitted = st.button('Update', use_container_width=True)
 
 if portfolio == 'Add New...':
     removed = False
 else:
-    removed = st.button('Del')
+    removed = st.button('Del', use_container_width=True)
 
 if submitted:
     data = {'name': portfolio_name, 'currency': portfolio_currency}
