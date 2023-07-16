@@ -28,13 +28,11 @@ else:
     currency = ref.document(portfolio).get().to_dict()['currency']
     del_button = True
 
-left, right = st.columns(2)
-portfolio_name = left.text_input('pf_name', name)
-portfolio_currency = right.text_input('pf_currency', currency)
+portfolio_name = st.text_input('pf_name', name)
+portfolio_currency = st.text_input('pf_currency', currency)
 
-left, right = st.columns(2)
-submitted = left.button('Update', use_container_width=True)
-removed = right.button('Del', use_container_width=True, disabled=del_button)
+submitted = st.button('Update', use_container_width=True)
+removed = st.button('Del', use_container_width=True, disabled=del_button)
 
 if submitted:
     data = {'name': portfolio_name, 'currency': portfolio_currency}
