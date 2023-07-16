@@ -22,11 +22,11 @@ portfolio = st.selectbox('portfolio', portfolios, label_visibility='collapsed')
 if portfolio == 'Add New...':
     name = ''
     currency = ''
-    del_button = False
+    del_button = True
 else:
     name = ref.document(portfolio).get().to_dict()['name']
     currency = ref.document(portfolio).get().to_dict()['currency']
-    del_button = True
+    del_button = False
 
 portfolio_name = st.text_input('pf_name', name)
 portfolio_currency = st.text_input('pf_currency', currency)
