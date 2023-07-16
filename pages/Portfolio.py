@@ -30,9 +30,18 @@ portfolio_name = st.text_input('pf_name', name)
 portfolio_currency = st.text_input('pf_currency', currency)
 submitted = st.button('Update')
 
+if portfolio == 'Add New...':
+    removed = False
+else:
+    removed = st.button('Del')
+
 if submitted:
     data = {'name': portfolio_name, 'currency': portfolio_currency}
     ref.document(portfolio_name).set(data)
+    st.experimental_rerun()
+
+if removed:
+    ref.document(portfolio_name).delete()
     st.experimental_rerun()
 
 
