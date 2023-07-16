@@ -20,6 +20,9 @@ if submitted:
     col_ref.document(pf_name).set(data)
 
 doc = db.collection('portfolios').stream()
-
+doc_list = []
 for i in doc:
-    st.write(f"{i.id} => {i.to_dict()}")
+    doc_list.append(i.id)
+    # st.write(f"{i.id} => {i.to_dict()}")
+
+port = st.selectbox('portfolio', doc_list, label_visibility='collapsed')
