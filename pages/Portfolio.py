@@ -19,8 +19,12 @@ portfolios.append('Add New...')
 
 portfolio = st.selectbox('portfolio', portfolios, label_visibility='collapsed')
 
-name = ref.document(portfolio).get().to_dict()['name']
-currency = ref.document(portfolio).get().to_dict()['currency']
+if portfolio == 'Add New...':
+    name = ''
+    currency = ''
+else:
+    name = ref.document(portfolio).get().to_dict()['name']
+    currency = ref.document(portfolio).get().to_dict()['currency']
 
 portfolio_name = st.text_input('pf_name', name)
 portfolio_currency = st.text_input('pf_currency', currency)
